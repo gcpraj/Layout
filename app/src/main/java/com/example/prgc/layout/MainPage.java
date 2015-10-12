@@ -25,7 +25,7 @@ public class MainPage extends AppCompatActivity {
 
         //Add a list as required
         String[] values = new String[]
-                { "Create aoal",
+                { "Create a goal",
                         "View a goal"};
 
         //Define a new adapter
