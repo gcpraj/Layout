@@ -4,13 +4,55 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.prgc.layout.R;
 
 public class MainPage extends AppCompatActivity {
+    ListView listview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
+        // Get Listview object from xml
+        listview = (ListView) findViewById(R.id.options_list);
+
+        //Add a list as required
+        String[] values = new String[]
+                { "Create aoal",
+                        "View a goal"};
+
+        //Define a new adapter
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                values);
+        listview.setAdapter(adapter);
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //Listview Clicked item index
+                int itemPosition = position;
+
+                String itemValue = (String) listview.getItemAtPosition(position);
+
+                Toast.makeText(getApplicationContext(), "Position:"+itemPosition+" ListItem:"+
+                        itemValue, Toast.LENGTH_LONG).show();
+
+
+            }
+        });
+
+
     }
 
     @Override
