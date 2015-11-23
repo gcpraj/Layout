@@ -1,5 +1,8 @@
 package com.example.prgc.layout;
 
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.prgc.layout.R;
@@ -17,8 +21,15 @@ public class MainPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        RelativeLayout rLayout;
+        Resources res = getResources();
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
+        rLayout = (RelativeLayout) findViewById(R.id.rLayout);
+        //rLayout.setBackgroundColor(Color.BLACK);
 
         // Get Listview object from xml
         listview = (ListView) findViewById(R.id.options_list);
@@ -47,6 +58,10 @@ public class MainPage extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), "Position:"+itemPosition+" ListItem:"+
                         itemValue, Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(getApplicationContext(), create_goal.class);
+                startActivity(intent);
+
 
 
             }
